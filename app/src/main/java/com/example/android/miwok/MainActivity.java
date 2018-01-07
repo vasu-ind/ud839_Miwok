@@ -94,5 +94,23 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(phrasesIntent);
             }
         });
+
+        // Find the View that shows the credits category
+        TextView credits = (TextView) findViewById(R.id.credits);
+
+        // Set a longClick listener on that view
+        credits.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                // Create a new intent to open the {@link PhrasesActivity}
+                Intent creditIntent = new Intent(MainActivity.this, CreditsActivity.class);
+
+                // Start the new activity
+                startActivity(creditIntent);
+                return false;
+            }
+        });
+
+
     }
 }

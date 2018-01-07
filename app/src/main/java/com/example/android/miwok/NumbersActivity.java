@@ -17,12 +17,36 @@ package com.example.android.miwok;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+import java.util.ArrayList;
 
 public class NumbersActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_numbers);
+        setContentView(R.layout.word_list);
+
+        // Create list of words
+
+        ArrayList<Word> numbers = new ArrayList<Word>(10);
+        numbers.add(new Word("One","एक", R.drawable.number_one));
+        numbers.add(new Word("Two","दो", R.drawable.number_two));
+        numbers.add(new Word("Three","तीन", R.drawable.number_three));
+        numbers.add(new Word("Four","चार", R.drawable.number_four));
+        numbers.add(new Word("Five","पांच", R.drawable.number_five));
+        numbers.add(new Word("Six","छ", R.drawable.number_six));
+        numbers.add(new Word("Seven","सात", R.drawable.number_seven));
+        numbers.add(new Word("Eight","आठ", R.drawable.number_eight));
+        numbers.add(new Word("Nine","नौ", R.drawable.number_nine));
+        numbers.add(new Word("Ten","दस", R.drawable.number_ten));
+
+        ArrayAdapter<Word> itemsAdapter = new WordAdaptor(this,numbers,R.color.category_numbers);
+
+        ListView listView = (ListView) findViewById(R.id.list);
+        listView.setAdapter(itemsAdapter);
+
     }
 }
